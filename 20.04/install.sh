@@ -33,13 +33,16 @@ function init_repositories {
     add-apt-repository -y ppa:nginx/stable
     grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/http:\/\/ppa.launchpad.net/https:\/\/launchpad.proxy.ustclug.org/g'
 
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+    # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    # echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 
-    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-    echo 'deb https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_10.x xenial main' > /etc/apt/sources.list.d/nodesource.list
-    echo 'deb-src https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_10.x xenial main' >> /etc/apt/sources.list.d/nodesource.list
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+    # curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+    # echo 'deb https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_10.x xenial main' > /etc/apt/sources.list.d/nodesource.list
+    # echo 'deb-src https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_10.x xenial main' >> /etc/apt/sources.list.d/nodesource.list
+    
     apt-get update
 }
 
@@ -49,7 +52,7 @@ function install_basic_softwares {
 
 function install_node_yarn {
     apt-get install -y nodejs yarn
-    sudo -H -u ${WWW_USER} sh -c 'cd ~ && yarn config set registry https://registry.npm.taobao.org'
+    # sudo -H -u ${WWW_USER} sh -c 'cd ~ && yarn config set registry https://registry.npm.taobao.org'
 }
 
 function install_php {
@@ -68,7 +71,7 @@ function install_others {
 function install_composer {
     curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
     chmod +x /usr/local/bin/composer
-    sudo -H -u ${WWW_USER} sh -c  'cd ~ && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/'
+    # sudo -H -u ${WWW_USER} sh -c  'cd ~ && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/'
 }
 
 call_function init_system "Initializing system" ${LOG_PATH}
