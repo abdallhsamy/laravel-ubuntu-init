@@ -1,11 +1,3 @@
-#!/usr/bin/env bash
-#
-# ANSI code generator
-#
-# © Copyright 2015 Tyler Akins
-# Licensed under the MIT license with an additional non-advertising clause
-# See http://github.com/fidian/ansi
-
 ansi::addCode() {
     local N
 

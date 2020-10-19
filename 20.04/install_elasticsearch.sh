@@ -6,7 +6,7 @@ source ${CURRENT_DIR}/../common/common.sh
 VERSION=$1
 VERSION=${VERSION:-6}
 
-[ $(id -u) != "0" ] && { ansi -n --bold --bg-red "Please use root Account to execute this script"; exit 1; }
+[ $(id -u) != "0" ] && { ansi -n --bold --bg-red "Please use root account to execute this script"; exit 1; }
 
 # Set up JAVA_HOME
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/db/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"

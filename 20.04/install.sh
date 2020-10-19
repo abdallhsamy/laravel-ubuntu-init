@@ -4,7 +4,7 @@ set -e
 CURRENT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 source ${CURRENT_DIR}/../common/common.sh
 
-[ $(id -u) != "0" ] && { ansi -n --bold --bg-red "Please use root Account to execute this script"; exit 1; }
+[ $(id -u) != "0" ] && { ansi -n --bold --bg-red "Please use root account to execute this script"; exit 1; }
 
 MYSQL_ROOT_PASSWORD=`random_string`
 
@@ -72,13 +72,13 @@ function install_composer {
 }
 
 call_function init_system "Initializing system" ${LOG_PATH}
-call_function init_repositories "Initializing software source" ${LOG_PATH}
-call_function install_basic_softwares "Installing basic software" ${LOG_PATH}
+call_function init_repositories "Initializing repositories" ${LOG_PATH}
+call_function install_basic_softwares "Installing basic softwares" ${LOG_PATH}
 call_function install_php "Installing PHP" ${LOG_PATH}
 call_function install_others "Installing Mysql / Nginx / Redis / Memcached / Beanstalkd / Sqlite3" ${LOG_PATH}
 call_function install_node_yarn "Installing Nodejs / Yarn" ${LOG_PATH}
 call_function install_composer "Installing Composer" ${LOG_PATH}
 
 ansi --green --bold -n "Installed"
-ansi --green --bold "Mysql root 密码："; ansi -n --bold --bg-yellow --black ${MYSQL_ROOT_PASSWORD}
-ansi --green --bold -n "Please do it manually source ~/.bash_aliases Make alias The order takes effect."
+ansi --green --bold "Mysql root password："; ansi -n --bold --bg-yellow --black ${MYSQL_ROOT_PASSWORD}
+ansi --green --bold -n "Please execute manually : source ~/.bash_aliases    Make the alias directive take effect."

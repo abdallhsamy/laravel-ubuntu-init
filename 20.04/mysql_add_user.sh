@@ -19,7 +19,7 @@ read -r -p "Please enter the username to be created：" MYSQL_NORMAL_USER
 
 MYSQL_NORMAL_USER_PASSWORD=`random_string`
 
-read -r -p "Do you want to create a database with the same name and grant permissions? [y/N] " response
+read -r -p "Do you want to create a database with the same name and grant permissions？ [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
         CREATE_DB=1
@@ -43,4 +43,4 @@ if [[ CREATE_DB -eq 1 ]]; then
     mysql --user="root" --password="${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;" >> ${LOG_PATH} 2>&1
 fi
 
-ansi -n --bold --green "database ${DATABASE_NAME} Created successfully";
+ansi -n --bold --green "Database ${DATABASE_NAME} successfully created";

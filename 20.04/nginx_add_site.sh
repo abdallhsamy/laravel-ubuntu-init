@@ -12,13 +12,14 @@ read -r -p "Please enter the project name：" project
     exit 1
 }
 
-read -r -p "Please enter the domain name of the site (multiple domain names are separated by spaces) ：" domains
+read -r -p "
+Please enter the domain name of the site (multiple domain names are separated by spaces)：" domains
 
 project_dir="/var/www/${project}"
 
-ansi -n --bold --green "domain list：${domains}"
-ansi -n --bold --green "title：${project}"
-ansi -n --bold --green "project directory：${project_dir}"
+ansi -n --bold --green "Domain list：${domains}"
+ansi -n --bold --green "Title：${project}"
+ansi -n --bold --green "Project directory：${project_dir}"
 
 read -r -p "Are you sure? [y/N] " response
 case "$response" in

@@ -20,11 +20,11 @@ mv laravel-ubuntu-init-master laravel-ubuntu-init
 rm -f laravel-ubuntu-init.tar.gz
 echo -e "${green}===> Download complete${nc}"
 echo ""
-echo -e "${green}The installation script is located at： ${HOME}/laravel-ubuntu-init${nc}"
+echo -e "${green}The installation script is located at: ${HOME}/laravel-ubuntu-init${nc}"
 
 [ $(id -u) != "0" ] && {
     source ${HOME}/laravel-ubuntu-init/common/ansi.sh
-    ansi -n --bold --bg-yellow --black "Current account is not root，Please use root Account to execute the installation script (using the command：sudo -H -s Switch to root）"
+    ansi -n --bold --bg-yellow --black "The current account is not root, please use the root account to execute the installation script (use the command: sudo -H -s to switch to root)"
 } || {
     bash ./laravel-ubuntu-init/20.04/install.sh
 }
