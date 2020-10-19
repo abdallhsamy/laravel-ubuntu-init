@@ -12,7 +12,6 @@ function init_system {
     export LC_ALL="en_US.UTF-8"
     echo "LC_ALL=en_US.UTF-8" >> /etc/default/locale
     locale-gen en_US.UTF-8
-    locale-gen zh_CN.UTF-8
 
     ln -sf /usr/share/zoneinfo/Africa/Cairo /etc/localtime
 
